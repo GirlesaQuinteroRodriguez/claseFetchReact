@@ -1,31 +1,29 @@
 import React, { useEffect, useState } from 'react'
 
 const Home = () => {
-    const [recipes, setRecipes] = useState([])
+    const [pokemon, setPokemon] = useState({})
 
-    const apiKey = '68d481a0fbc340308fbf934f836ee8c6'
-
-    const url = 'https://api.spoonacular.com/recipes/random?number=10&apiKey=' + apiKey
+    const url = 'https://pokeapi.co/api/v2/pokemon/ditto'
 
     useEffect(() => {
         fetch(url)
-        .then(res => res.json())
-        .then(data => setRecipes(data.recipes))
+            .then(res => res.json())
+            .then(data => setPokemon(data.species))
     }, [])
-   
 
-    console.log(recipes)
-  return (
-    <div>
-        {recipes.map((recipe) => (
-            <div key={recipe.id}>
-                <h3>{recipe.title}</h3>
-                <img src={recipe.image} alt="" />
-            </div>
-        ))}
+
+    console.log(pokemon)
+    return (
+        <div>
+
+
+            <h3>{poke.name}</h3>
+            <img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png' alt="" />
+       
+    
         
 
-    </div>
+    </div >
   )
 }
 
